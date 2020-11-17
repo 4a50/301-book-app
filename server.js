@@ -42,7 +42,7 @@ function showForm(req, res) {
 
 function createSearch(req, res) {
   try {
-    let url = 'https://www.googleapis.com/books/v1/volu';//mes?q=';
+    let url = 'https://www.googleapis.com/books/v1/volumes?q=';
 
     if (req.body.search[1] === 'title') { url += `+intitle:${req.body.search[0]}`; }
 
