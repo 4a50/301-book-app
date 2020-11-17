@@ -11,14 +11,26 @@
     <h1>Best Books!</h1>
   </header>
   <main>
-    <h2 class="search-title">Welcome to Best Book Search and Bookcase!</h2>
-
+    <section class="total-saved-books">
+      <h4><%=bookShelf.length%></h4>
+      <h2 class="search-title">Saved Books</h2>
+    </section>
     <form action="/searches/new" method="get">
       <button class="start-button" type="submit">
         Click to Get Started!
       </button>
     </form>
-
+    <section>
+      <% bookShelf.map(element => { %>
+      <div class="disp-container">
+        <div class="img-container">
+          <img src="<%=element.image_url%>">
+        </div>
+        <h3><%=element.title%></h3>
+        <h4><%=element.author%></h4>
+      </div>
+      <% }) %>
+    </section>
 
 
   </main>

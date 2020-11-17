@@ -104,4 +104,27 @@ fieldset > input {
   text-align: left;
   padding: 7vw 6vw;
 }
+
+.total-saved-books{
+  display:flex;
+  justify-content: center;
+  color: white;
+  background-color: rgb(61, 61, 61);
+  font-size: 4vw;
+  padding: 4.5vw 0vw;
+}
+
+.total-saved-books h4 {
+  border-radius: 50%;
+  background-color: #DADADA;
+  color: black;
+  height: 4vw;
+  width: 6vw;
+  margin-top: 3.3vw;
+  margin-right: 2vw;
+  font-size: 4vw;
+  padding: 1vw 0vw;
+}
+
+}
 }
