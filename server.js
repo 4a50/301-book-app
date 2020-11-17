@@ -53,7 +53,7 @@ function createSearch(req, res) {
         return data.body.items.map(book => new Book(book.volumeInfo));
       })
       .then(results => {
-        res.render('pages/searches/show', { searchResults: JSON.stringify(results) });
+        res.render('pages/searches/show', { searchResults: results });
       })
       .catch(err => {
         res.render('pages/error', errorRender(err));
