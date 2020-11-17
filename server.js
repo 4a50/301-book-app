@@ -5,6 +5,7 @@ const superagent = require('superagent');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const pg = require('pg');
+const { render } = require('ejs');
 
 dotenv.config();
 
@@ -17,6 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 //Routes
+app.get('/', (req, res) => res.render('pages/index'));
+
 app.get('/searches/new', showForm);
 app.post('/searches', createSearch);
 app.get('/hello', (req, res) => {
