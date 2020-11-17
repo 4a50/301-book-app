@@ -54,4 +54,17 @@ function createSearch(req, res) {
 
 function Book(info) {
   this.title = info.title || 'No Title Available!  Check something else!';
+  this.author = info.authors || 'No Author Information Available, blame Google!';
+  this.description = info.description || 'This book does not have a description, perhaps you should post one.';
+
+  ('imageLinks' in info ?
+
+    this.image = info.imageLinks.thumbnail : this.image = 'https://i.imgur.com/J5LVHEL.jpg');
+
+  if (this.image.substring(0,6) !== 'https') {
+    let imageLinkString = this.image.substring(6);
+    let imageUrl = 'https:' + imageLinkString;
+    this.image = imageUrl;
+  }
+
 }
