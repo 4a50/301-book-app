@@ -9,8 +9,13 @@ const { render } = require('ejs');
 
 dotenv.config();
 
+
+
 const app = express();
 const PORT = process.env.PORT || 3000;
+const DATABASE_URL = process.env.DATABASE_URL;
+const client = new pg.Client(DATABASE_URL);
+
 
 app.use(cors());
 app.use(express.static('./public'));
@@ -18,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 //Routes
-app.get('/', (req, res) => res.render('pages/index'));
+app.get('/', homePage);
 
 app.get('/searches/new', showForm);
 app.post('/searches', createSearch);
@@ -29,11 +34,37 @@ app.get('/hello', (req, res) => {
 
 //Listening to the ether
 
-app.listen(PORT, () => {
-  console.log(`Server is working on ${PORT}`);
-})
-
+client.connect()
+  .then(() => {
+    console.log('Spun up the Databass');
+    app.listen(PORT, () => {
+      console.log(`Server is working on ${PORT}`);
+    })
+  })
+  .catch(err => {
+    console.log('Unable to connect, guess we are antisocial:', err);
+  });
 //Functions
+
+function homePage(req, res) {
+  try {
+    let sql = 'SELECT * FROM books';
+    client.query(sql)
+      .then(result => {
+        console.log(result);
+        res.render('pages/index', {
+          bookShelf: result.rows
+        });
+      })
+      .catch((err) => errorRender(err));
+
+
+
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
 
 function showForm(req, res) {
   try { res.render('pages/searches/new.ejs'); }
@@ -80,15 +111,13 @@ function Book(info) {
   this.title = info.title || 'No Title Available!  Check something else!';
   this.author = info.authors || 'No Author Information Available, blame Google!';
   this.description = info.description || 'This book does not have a description, perhaps you should post one.';
-
-  ('imageLinks' in info ?
-
-    this.image = info.imageLinks.thumbnail : this.image = 'https://i.imgur.com/J5LVHEL.jpg');
+  ('imageLinks' in info ? this.image = info.imageLinks.thumbnail : this.image = 'https://i.imgur.com/J5LVHEL.jpg');
+  this.isbn = `${info.industryIdentifiers[0].type} ${info.industryIdentifiers[0].identifier}`;
 
   if (this.image.substring(0, 6) !== 'https') {
     let imageLinkString = this.image.substring(6);
     let imageUrl = 'https:' + imageLinkString;
     this.image = imageUrl;
   }
-
+  console.log(this);
 }
