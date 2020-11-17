@@ -2,14 +2,36 @@
 <html>
 
 <head>
-  <title>Results</title>
+  <title>Results for </title>
+  <link href="/styles/base.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
+  <header>
+    <h1>Best Books!</h1>
+  </header>
   <main>
-    <h1>
-      <%= searchResults %>
-    </h1>
+    <section>
+      <h2 class="search-title">Search Results</h2>
+
+      <section>
+        <% for(let i=0; i < searchResults.length; i++) { %>
+        <div class="disp-container">
+          <div class="img-container">
+            <img src='<%=searchResults[i].image%>'>
+          </div>
+          <h3><%=searchResults[i].title%></h3>
+          <h4><%=searchResults[i].author%></h4>
+          <p><%=searchResults[i].description%></p>
+        </div>
+        <% } %>
+      </section>
+
+      <!-- Lookup -->
+      <h3>
+
+      </h3>
+    </section>
   </main>
 </body>
 

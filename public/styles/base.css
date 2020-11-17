@@ -1,4 +1,6 @@
-h1 {
-  border: 1px solid purple;
-  background-color: red;
+@import "/styles/reset.css";
+@import "/styles/layout.css";
+@import "/styles/modules.css";
+body{
+  background-color: gray;
 }
