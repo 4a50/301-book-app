@@ -27,6 +27,8 @@ app.get('/', homePage);
 
 app.get('/searches/new', showForm);
 app.post('/searches', createSearch);
+app.get('/books/:id', bookView);
+
 app.get('/hello', (req, res) => {
   res.render('pages/index');
 })
@@ -46,6 +48,21 @@ client.connect()
   });
 //Functions
 
+function bookView(req,res){
+  let SQL = 'SELECT * FROM books WHERE id=$1';
+  // console.log('req.params.id', req.params.id);
+  let values = [req.params.id];
+
+  return client.query(SQL, values)
+    .then (result => {
+      // console.log('result',result);
+      console.log(result.rows[0]);
+      return res.render('pages/searches/show', {searchResults: result.rows[0]});
+    })
+    .catch((err) => errorRender(err));
+
+}
+
 function homePage(req, res) {
   try {
     let sql = 'SELECT * FROM books';
@@ -57,9 +74,6 @@ function homePage(req, res) {
         });
       })
       .catch((err) => errorRender(err));
-
-
-
   }
   catch (err) {
     console.log(err);
@@ -71,7 +85,6 @@ function showForm(req, res) {
   catch (err) {
     res.render('pages/error', errorRender(err));
   }
-
 }
 
 function createSearch(req, res) {
@@ -111,13 +124,13 @@ function Book(info) {
   this.title = info.title || 'No Title Available!  Check something else!';
   this.author = info.authors || 'No Author Information Available, blame Google!';
   this.description = info.description || 'This book does not have a description, perhaps you should post one.';
-  ('imageLinks' in info ? this.image = info.imageLinks.thumbnail : this.image = 'https://i.imgur.com/J5LVHEL.jpg');
+  ('imageLinks' in info ? this.image_url = info.imageLinks.thumbnail : this.image_url = 'https://i.imgur.com/J5LVHEL.jpg');
   this.isbn = `${info.industryIdentifiers[0].type} ${info.industryIdentifiers[0].identifier}`;
 
-  if (this.image.substring(0, 6) !== 'https') {
-    let imageLinkString = this.image.substring(6);
-    let imageUrl = 'https:' + imageLinkString;
-    this.image = imageUrl;
+  if (this.image_url.substring(0, 6) !== 'https') {
+    let imageLinkString = this.image_url.substring(6);
+    let imageUrl = 'https:/' + imageLinkString;
+    this.image_url = imageUrl;
   }
   console.log(this);
 }

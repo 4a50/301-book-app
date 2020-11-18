@@ -7,9 +7,7 @@
 
 
 <body>
-  <header>
-    <h1>Best Books!</h1>
-  </header>
+  <%- include('header.ejs') %>
   <main>
     <section class="total-saved-books">
       <h4><%=bookShelf.length%></h4>
@@ -28,6 +26,7 @@
         </div>
         <h3><%=element.title%></h3>
         <h4><%=element.author%></h4>
+        <a href="/books/<%= element.id %>">View Details</button>
       </div>
       <% }) %>
     </section>
