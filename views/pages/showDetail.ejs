@@ -7,16 +7,14 @@
 </head>
 
 <body>
-  <%- include('../header.ejs') %>
+  <%- include('header.ejs') %>
   <main>
     <section>
       <h2 class="search-title">Search Results</h2>
 
       <section>
+      <%- include('detail.ejs', {bookDetail: searchResults}) %>
         
-        <% for(let i=0; i < searchResults.length; i++) { %>
-          <%- include('../detail.ejs', {bookDetail: searchResults[i]}) %>
-        <% } %>
       </section>
 
       

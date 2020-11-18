@@ -57,7 +57,7 @@ function bookView(req,res){
     .then (result => {
       // console.log('result',result);
       console.log(result.rows[0]);
-      return res.render('pages/searches/show', {searchResults: result.rows[0]});
+      return res.render('pages/showDetail', {searchResults: result.rows[0]});
     })
     .catch((err) => errorRender(err));
 

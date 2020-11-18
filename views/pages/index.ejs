@@ -19,13 +19,14 @@
       </button>
     </form>
     <section>
-      <% bookShelf.map(element => { %>
+      <%- include('detail', {searchResults: bookShelf[0]}) %>
+      <!-- <% bookShelf.map(element => { %>
       <div class="disp-container">
         <div class="img-container">
           <img src="<%=element.image_url%>">
         </div>
         <h3><%=element.title%></h3>
-        <h4><%=element.author%></h4>
+        <h4><%=element.author%></h4> -->
         <a href="/books/<%= element.id %>">View Details</button>
       </div>
       <% }) %>
