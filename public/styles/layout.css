@@ -8,13 +8,16 @@ main{
 
 }
 header{
-  padding: 7vw 0vw;
+  padding-top: 2vw;
   background-color: black;
+
 }
 h1 {
+  float: left;
   font-size: 7.0vw;
   color: white;
   padding: 0vw 3vw;
+  
 }
 
 h3 {
