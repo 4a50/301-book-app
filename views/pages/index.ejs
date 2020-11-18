@@ -7,9 +7,7 @@
 
 
 <body>
-  <header>
-    <h1>Best Books!</h1>
-  </header>
+  <%- include('header.ejs') %>
   <main>
     <section class="total-saved-books">
       <h4><%=bookShelf.length%></h4>
@@ -21,16 +19,12 @@
       </button>
     </form>
     <section>
-      <% bookShelf.map(element => { %>
-      <div class="disp-container">
-        <div class="img-container">
-          <img src="<%=element.image_url%>">
-        </div>
-        <h3><%=element.title%></h3>
-        <h4><%=element.author%></h4>
-      </div>
-      <% }) %>
+      <% for(let i=0; i < bookShelf.length; i++) { %>
+      <%- include('detail', {bookDetail: bookShelf[i]}) %>
+      <a href="/books/<%- bookShelf[i].id%>">View Details</a>
+      <% } %>
     </section>
+
 
 
   </main>

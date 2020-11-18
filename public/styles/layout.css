@@ -126,5 +126,17 @@ fieldset > input {
   padding: 1vw 0vw;
 }
 
+section a {
+  background-color: #DADADA;
+  font-size: 3vw;
+  padding: 2vw 5.1vw;
+  margin: 3vw 0vw;
+  display: inline-block;
+  text-decoration: none;
+  border: 5px solid black;
+  color: black;
+
 }
+
 }
+
