@@ -19,18 +19,12 @@
       </button>
     </form>
     <section>
-      <%- include('detail', {searchResults: bookShelf[0]}) %>
-      <!-- <% bookShelf.map(element => { %>
-      <div class="disp-container">
-        <div class="img-container">
-          <img src="<%=element.image_url%>">
-        </div>
-        <h3><%=element.title%></h3>
-        <h4><%=element.author%></h4> -->
-        <a href="/books/<%= element.id %>">View Details</button>
-      </div>
-      <% }) %>
+      <% for(let i=0; i < bookShelf.length; i++) { %>
+      <%- include('detail', {bookDetail: bookShelf[i]}) %>
+      <a href="/books/<%- bookShelf[i].id%>">View Details</a>
+      <% } %>
     </section>
+
 
 
   </main>
