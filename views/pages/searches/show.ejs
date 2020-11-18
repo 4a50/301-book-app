@@ -13,13 +13,21 @@
       <h2 class="search-title">Search Results</h2>
 
       <section>
-        
+
         <% for(let i=0; i < searchResults.length; i++) { %>
-          <%- include('../detail.ejs', {bookDetail: searchResults[i]}) %>
+        <%- include('../detail.ejs', {bookDetail: searchResults[i]}) %>
+        <form action="/books/addBook" method="post">
+          <input type="hidden" name="author" value="<%=searchResults[i].author%>"> </input>
+          <input type="hidden" name="title" value="<%=searchResults[i].title%>"></input>
+          <input type="hidden" name="description" value="<%=searchResults[i].description%>"></input>
+          <input type="hidden" name="isbn" value="<%=searchResults[i].isbn%>"></input>
+          <input type="hidden" name="image_url" value="<%=searchResults[i].image_url%>"></input>
+          <button class="shelf-button" type="submit" name="<%=searchResults[i]%>">Add to Shelf</button>
+        </form>
         <% } %>
       </section>
 
-      
+
       <h3>
 
       </h3>

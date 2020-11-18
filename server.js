@@ -28,6 +28,7 @@ app.get('/', homePage);
 app.get('/searches/new', showForm);
 app.post('/searches', createSearch);
 app.get('/books/:id', bookView);
+app.post('/books/addBook', addSelectedBook);
 
 app.get('/hello', (req, res) => {
   res.render('pages/index');
@@ -47,17 +48,35 @@ client.connect()
     console.log('Unable to connect, guess we are antisocial:', err);
   });
 //Functions
+function addSelectedBook(req, res) {
+  // add the data from the book object into the database.
 
-function bookView(req,res){
+  let SQL = 'INSERT INTO books (title, author, isbn, image_url, description) VALUES ($1, $2, $3, $4, $5);';
+  let values = [req.body.title, req.body.author, req.body.isbn, req.body.image_url, req.body.description];
+
+  client.query(SQL, values)
+    .then(() => {
+      client.query('SELECT MAX(ID) AS LastID FROM books')
+        .then(data => res.redirect(`/books/${data.rows[0].lastid}`))
+        .catch(() => console.log('Unable to fetch ID number, you messed up.'));
+    })
+    .catch(err => {
+      console.log('QuErY ErRoR', err);
+    })
+
+}
+
+
+function bookView(req, res) {
   let SQL = 'SELECT * FROM books WHERE id=$1';
   // console.log('req.params.id', req.params.id);
   let values = [req.params.id];
 
   return client.query(SQL, values)
-    .then (result => {
+    .then(result => {
       // console.log('result',result);
-      console.log(result.rows[0]);
-      return res.render('pages/showDetail', {searchResults: result.rows[0]});
+
+      return res.render('pages/showDetail', { searchResults: result.rows[0] });
     })
     .catch((err) => errorRender(err));
 
@@ -68,7 +87,7 @@ function homePage(req, res) {
     let sql = 'SELECT * FROM books';
     client.query(sql)
       .then(result => {
-        console.log(result);
+
         res.render('pages/index', {
           bookShelf: result.rows
         });
@@ -132,5 +151,7 @@ function Book(info) {
     let imageUrl = 'https:/' + imageLinkString;
     this.image_url = imageUrl;
   }
-  console.log(this);
+
+  // console.log('This is our Image Link After:', this.image_url);
+  //console.log(this);
 }
