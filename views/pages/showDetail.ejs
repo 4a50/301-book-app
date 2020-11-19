@@ -13,11 +13,19 @@
       <h2 class="search-title">Search Results</h2>
 
       <section>
-      <%- include('detail.ejs', {bookDetail: searchResults}) %>
-        
+        <%- include('detail.ejs', {bookDetail: searchResults}) %>
+
+        <form action="/books/update/<%= searchResults.id%>" method="POST">
+          <button type="submit">Update Details</button>
+        </form>
+
+        <form action="/books/removeBook/?_method=DELETE" method="POST">
+          <button type="submit">Delete Book</button>
+        </form>
+
       </section>
 
-      
+
       <h3>
 
       </h3>

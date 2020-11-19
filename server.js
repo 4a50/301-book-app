@@ -15,12 +15,16 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const DATABASE_URL = process.env.DATABASE_URL;
 const client = new pg.Client(DATABASE_URL);
+const methodOverride = require('method-override');
+
 
 
 app.use(cors());
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+app.use(methodOverride('_method'));
+
 
 //Routes
 app.get('/', homePage);
@@ -29,11 +33,12 @@ app.get('/searches/new', showForm);
 app.post('/searches', createSearch);
 app.get('/books/:id', bookView);
 app.post('/books/addBook', addSelectedBook);
-
 app.get('/hello', (req, res) => {
   res.render('pages/index');
 })
-
+app.put('/books/update/', updateDatabase);
+app.post('/books/update/:book_id', updateBook);
+app.delete('/books/removeBook/:book_id', removeBook);
 
 //Listening to the ether
 
@@ -48,6 +53,34 @@ client.connect()
     console.log('Unable to connect, guess we are antisocial:', err);
   });
 //Functions
+function removeBook(req, res) {
+  console.log('params', req.params, 'req body', req.body);
+}
+
+function updateDatabase(req, res) {
+
+  let { title, author, isbn, image_url, description } = req.body;
+  let SQL = `UPDATE books SET title=$1, author=$2, isbn=$3, image_url=$4, description=$5 WHERE id=$6`;
+  let values = [title, author, isbn, image_url, description, req.body.id];
+
+  client.query(SQL, values)
+    .then(() => res.redirect(`/books/${req.body.id}`))
+    .catch(console.log('NOPE'));
+}
+
+function updateBook(req, res) {
+  let recordNumber = req.params.book_id;
+  let SQL = `SELECT * FROM books WHERE id=${recordNumber}`;
+  client.query(SQL)
+    .then(data => {
+      res.render('pages/update', { bookData: data.rows[0] });
+    })
+    .catch((err) => console.log('BrOkE!'));
+}
+
+
+
+
 function addSelectedBook(req, res) {
   // add the data from the book object into the database.
 
