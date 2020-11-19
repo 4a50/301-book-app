@@ -12,14 +12,14 @@
     <section>
       <h2 class="search-title">Search Results</h2>
 
-      <section>
-        <%- include('detail.ejs', {bookDetail: searchResults}) %>
+      <%- include('detail.ejs', {bookDetail: searchResults}) %>
+      <section class="psuedo-button-section">
 
-        <form action="/books/update/<%= searchResults.id%>" method="POST">
+        <form class="detail-delete-form" action="/books/update/<%= searchResults.id%>" method="POST">
           <button type="submit">Update Details</button>
         </form>
 
-        <form action="/books/removeBook/?_method=DELETE" method="POST">
+        <form class="detail-delete-form" action="/books/removeBook/?_method=DELETE" method="POST">
           <button type="submit">Delete Book</button>
           <input type="hidden" name="id" value="<%= searchResults.id%>">
         </form>

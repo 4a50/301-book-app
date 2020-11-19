@@ -3,7 +3,7 @@
 }
 
 body {
-  margin: 0;
+  margin: 0;  
 }
 
 .navbar {
@@ -109,9 +109,12 @@ body {
 
 .update-form button {
   position: absolute;
-  left: calc(50% - 11.5vw);
+  left: calc(50% - 20vw);
   top: 120vw;
   margin-bottom: 5vw;
+  width: 40vw;
+  height: 8vw;
+  font-size: 4vw;
 }
 
 .update-form p {
@@ -125,3 +128,25 @@ body {
   margin-top: 2vw;
 
 }
+/* JP's Edits */
+.psuedo-button-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10vw;
+}
+.detail-delete-form {
+  padding: 1vw 0vw 0vw 0vw;
+  display: block;
+}
+.detail-delete-form button{
+  width: 68vw;
+    height: 8vw;
+    padding: 0vw 0vw 0vw 0vw;
+    background-color: black;
+    font-size: 4vw;
+}
+
+
+
+/*  */
