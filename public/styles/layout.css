@@ -121,7 +121,7 @@ fieldset > input {
   border-radius: 50%;
   background-color: #DADADA;
   color: black;
-  height: 4vw;
+  height: 6vw;
   width: 6vw;
   margin-top: 3.3vw;
   margin-right: 2vw;
@@ -138,8 +138,16 @@ section a {
   text-decoration: none;
   border: 5px solid black;
   color: black;
+  border-radius: 10px;
 
 }
-
+button {
+  background-color: black;
+  color: white;
+  width: 23vw;
+  height: 5vw;
+  border-radius: 10px;
+  font-size: 2vw;
+}
 }
 

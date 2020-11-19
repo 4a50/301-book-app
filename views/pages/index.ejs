@@ -13,11 +13,7 @@
       <h4><%=bookShelf.length%></h4>
       <h2 class="search-title">Saved Books</h2>
     </section>
-    <form action="/searches/new" method="get">
-      <button class="start-button" type="submit">
-        Click to Get Started!
-      </button>
-    </form>
+
     <section>
       <% for(let i=0; i < bookShelf.length; i++) { %>
       <%- include('detail', {bookDetail: bookShelf[i]}) %>

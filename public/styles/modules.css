@@ -49,6 +49,7 @@ body {
 .navbar a:hover, .dropdown:hover .dropbtn {
   background-color: black;
   opacity: .5;
+  border-radius: 10px;
 }
 
 .dropdown-content {
@@ -56,15 +57,22 @@ body {
   position: absolute;
   background-color: black;
   opacity: .75;
-  width: 100%;
-  left: 0;
+  width: 75%;
+  left: 22%;
+  top:0%;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  border-radius: 10px;
+}
+.dropdown-content a{
+  font-size: 4vw;
+  display: block;
 }
 
 .dropdown:hover .dropdown-content {
   display: inline-block;
-  border: 1px solid red;
+  /* border: 1px solid rgb(228, 217, 217); */
+  border-radius: 10px;
   font-size: 3em;
 }
 
