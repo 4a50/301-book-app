@@ -65,7 +65,7 @@ form{
   color: black;
 }
 .google-button{
-  width: 88vw;
+  width: 78vw;
   text-align:center;
   background-color: black;
   color: white;
@@ -76,6 +76,11 @@ form{
   margin: 4vw 6vw 0vw 0vw;
   text-align: left;
 }
+
+.title-but {
+  margin-right: 11vw;
+}
+
 .txt-search{
   background-color: rgb(255, 255, 255);
   color: black;

@@ -7,15 +7,19 @@
 </head>
 
 <body>
+  <%- include('header.ejs') %>
   <main>
-    <form action="/books/update/?_method=PUT" method="POST">
-
-      <input type="text" name="title" value="<%= bookData.title %>">
+    <form class="update-form" action="/books/update/?_method=PUT" method="POST">
+      <p>Title</p>
+      <input type="text" name="ti<label for=""></label>
+      <p>Author</p>
       <input type="text" name="author" value="<%= bookData.author %>">
+      <p>ISBN</p>
       <input type="text" name="isbn" value="<%= bookData.isbn %>">
+      <p>Book Image URL</p>
       <input type="text" name="image_url" value="<%= bookData.image_url %>">
       <input type="hidden" name="id" value="<%=bookData.id%>">
-
+      <p>Description</p>
       <textarea type="text" name="description" value="<%= bookData.description %>"><%= bookData.description %>
         </textarea>
       <button type="submit">Update Book</button>
