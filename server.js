@@ -38,7 +38,7 @@ app.get('/hello', (req, res) => {
 })
 app.put('/books/update/', updateDatabase);
 app.post('/books/update/:book_id', updateBook);
-app.delete('/books/removeBook/:book_id', removeBook);
+app.delete('/books/removeBook/', removeBook);
 
 //Listening to the ether
 
@@ -54,7 +54,12 @@ client.connect()
   });
 //Functions
 function removeBook(req, res) {
-  console.log('params', req.params, 'req body', req.body);
+  console.log('req body.id', req.body.id);
+  let SQL = `DELETE FROM books WHERE id=${req.body.id}`;
+  client.query(SQL)
+    .then(data => console.log('reply', data))
+    .then(res.redirect('/'))
+    .catch(console.log('NOPE, DELETE DID NOT WO...'));
 }
 
 function updateDatabase(req, res) {

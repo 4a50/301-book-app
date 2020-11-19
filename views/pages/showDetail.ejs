@@ -21,6 +21,7 @@
 
         <form action="/books/removeBook/?_method=DELETE" method="POST">
           <button type="submit">Delete Book</button>
+          <input type="hidden" name="id" value="<%= searchResults.id%>">
         </form>
 
       </section>
