@@ -3,7 +3,7 @@
 }
 
 body {
-  margin: 0;
+  margin: 0;  
 }
 
 .navbar {
@@ -13,6 +13,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: row-reverse;
+  height: 10vw;
   
 }
 
@@ -49,6 +50,7 @@ body {
 .navbar a:hover, .dropdown:hover .dropbtn {
   background-color: black;
   opacity: .5;
+  border-radius: 10px;
 }
 
 .dropdown-content {
@@ -56,15 +58,22 @@ body {
   position: absolute;
   background-color: black;
   opacity: .75;
-  width: 100%;
-  left: 0;
+  width: 75%;
+  left: 22%;
+  top:0%;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  border-radius: 10px;
+}
+.dropdown-content a{
+  font-size: 4vw;
+  display: block;
 }
 
 .dropdown:hover .dropdown-content {
   display: inline-block;
-  border: 1px solid red;
+  /* border: 1px solid rgb(228, 217, 217); */
+  border-radius: 10px;
   font-size: 3em;
 }
 
@@ -81,3 +90,63 @@ body {
   
 }
 
+/* Simon's edits start here */
+
+.update-form {
+  margin-top: 1vw;
+  padding: 3vw;
+}
+
+.update-form input, textarea {
+  margin: 2vw;
+  height: 5vw;
+  font-size: 3vw;
+}
+
+.update-form textarea {
+  height: 30vw;
+}
+
+.update-form button {
+  position: absolute;
+  left: calc(50% - 20vw);
+  top: 120vw;
+  margin-bottom: 5vw;
+  width: 40vw;
+  height: 8vw;
+  font-size: 4vw;
+}
+
+.update-form p {
+  text-align: left;
+  padding-left: 3vw;
+  margin-top: 2vw;
+}
+
+.shelf-button-results {
+  margin-left: calc(50% - 14vw);
+  margin-top: 2vw;
+
+}
+/* JP's Edits */
+.psuedo-button-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10vw;
+}
+.detail-delete-form {
+  padding: 1vw 0vw 0vw 0vw;
+  display: block;
+}
+.detail-delete-form button{
+  width: 68vw;
+    height: 8vw;
+    padding: 0vw 0vw 0vw 0vw;
+    background-color: black;
+    font-size: 4vw;
+}
+
+
+
+/*  */

@@ -1,4 +1,4 @@
-@media (min-width: 480px){ 
+@media screen and (min-width: 460px) { 
 
 main{
   display:flex;  
@@ -65,7 +65,7 @@ form{
   color: black;
 }
 .google-button{
-  width: 88vw;
+  width: 78vw;
   text-align:center;
   background-color: black;
   color: white;
@@ -76,6 +76,11 @@ form{
   margin: 4vw 6vw 0vw 0vw;
   text-align: left;
 }
+
+.title-but {
+  margin-right: 11vw;
+}
+
 .txt-search{
   background-color: rgb(255, 255, 255);
   color: black;
@@ -93,10 +98,12 @@ fieldset > input {
   margin: 10vw 10vw 0vw 10vw;
   background-color: #DADADA;
 }
+/* JP EDIT */
 .img-container > img{
   /* display:block; */
   margin: 4vw 0vw 0vw 0vw;
-  width: 12em;
+  width: 28vw;
+  /* JP EDIT */
 }
 .disp-container > * {
   padding:2vw 0vw 0vw 0vw;
@@ -121,7 +128,7 @@ fieldset > input {
   border-radius: 50%;
   background-color: #DADADA;
   color: black;
-  height: 4vw;
+  height: 6vw;
   width: 6vw;
   margin-top: 3.3vw;
   margin-right: 2vw;
@@ -138,8 +145,24 @@ section a {
   text-decoration: none;
   border: 5px solid black;
   color: black;
+  border-radius: 10px;
+
+}
+button {
+  background-color: black;
+  color: white;
+  width: 23vw;
+  height: 5vw;
+  border-radius: 10px;
+  font-size: 2vw;
+}
+/* JP EDIT */
+img {
+  border: 5px solid black;
+  border-radius: 10px;
+}
+/*  */
 
 }
 
-}
 
